@@ -20,13 +20,14 @@ RUN set -x \
 COPY package*.json ./
 
 # Install the dependencies
-RUN npm ci --only=production --ignore-scripts
+#RUN npm ci --only=production --ignore-scripts
 
 # Copy the rest of the source code to the working directory
 COPY . .
 
-# Expose the port the API will run on
-EXPOSE 3000
+RUN npm install
+
+EXPOSE 3001
 
 # Start the API
-CMD ["npm", "start"]
+CMD ["npm","run","start"]

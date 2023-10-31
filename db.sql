@@ -1,3 +1,5 @@
+alter user postgres with password '01278945a'
+
 CREATE TABLE IF NOT EXISTS patient(
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
@@ -28,10 +30,9 @@ CREATE TABLE IF NOT EXISTS program(
 CREATE TABLE IF NOT EXISTS program_patient(
     id SERIAL PRIMARY KEY,
 	created_on TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-	id_program INT,
+	name_program varchar(50),
 	id_patient INT,
-	CONSTRAINT fk_id_template FOREIGN KEY(id_program) REFERENCES program(id),
-	CONSTRAINT fk_id_patient_program FOREIGN KEY(id_patient) REFERENCES patient(id)
+	CONSTRAINT fk_id_pat_prpa FOREIGN KEY(id_patient) REFERENCES patient(id)
 );
 
 CREATE TABLE IF NOT EXISTS events(
@@ -74,5 +75,21 @@ CREATE TABLE IF NOT EXISTS notification(
 	name_program varchar(50),
 	CONSTRAINT fk_id_not_id_pat FOREIGN KEY(id_patient) REFERENCES patient(id),
 	CONSTRAINT fk_id_not_id_pro FOREIGN KEY(id_program) REFERENCES program(id),
-	CONSTRAINT fk_id_not_id_tem FOREIGN KEY(id_template) REFERENCES template(id),
+	CONSTRAINT fk_id_not_id_tem FOREIGN KEY(id_template) REFERENCES template(id)
+);
+
+CREATE TABLE IF NOT EXISTS token(
+    id SERIAL PRIMARY KEY,
+	created_on TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+	key varchar(50),
+	value varchar(50)
+);
+
+CREATE TABLE IF NOT EXISTS program_rules(
+    id SERIAL PRIMARY KEY,
+	created_on TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+	name_program varchar(50),
+	date_rule_start TIMESTAMP WITH TIME ZONE,
+	date_rule_end TIMESTAMP WITH TIME ZONE,
+	unique(name_program)
 );
