@@ -20,11 +20,3 @@ sessions_test
 .gitignore
 
 # Ignore other unnecessary files
-README.md
-CONTRIBUTING.md
-LICENSE.md
-Dockerfile
-docker-compose.yml
-swagger.yml
-.github
-assets
