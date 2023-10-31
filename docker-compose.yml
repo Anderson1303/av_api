@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    container_name: whatsapp_web_api_2
+    container_name: whatsapp_web_api_4
     image: andersonfranz/api-verdinho-cors:1.4
     # restart: always
     ports:
