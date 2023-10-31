@@ -27,7 +27,7 @@ COPY . .
 
 RUN npm install
 
-EXPOSE 3001
+EXPOSE 3000
 
 # Start the API
 CMD ["npm","run","start"]
