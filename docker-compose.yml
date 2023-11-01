@@ -3,7 +3,7 @@ version: '3.8'
 services:
   app:
     container_name: whatsapp_web_api_7
-    image: andersonfranz/api-verdinho-cors:1.7
+    image: andersonfranz/api-verdinho-cors:1.8
     # restart: always
     ports:
       - "3000:3000"
